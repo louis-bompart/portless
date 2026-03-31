@@ -529,6 +529,8 @@ async function runApp(
       HOST: "127.0.0.1",
       PORTLESS_URL: finalUrl,
       __VITE_ADDITIONAL_SERVER_ALLOWED_HOSTS: `.${tld}`,
+      SBCONFIG_PORT: port.toString(),
+      SBCONFIG_HOSTNAME: "127.0.0.1",
     },
     onCleanup: () => {
       try {
@@ -767,7 +769,8 @@ ${chalk.bold("How it works:")}
   3. Access via http://<name>.localhost:1355
   4. .localhost domains auto-resolve to 127.0.0.1
   5. Frameworks that ignore PORT (Vite, Astro, React Router, Angular,
-     Expo, React Native) get --port and --host flags injected automatically
+     Expo, React Native) get --port and --host flags injected automatically.
+     Storybook is handled via SBCONFIG_PORT and SBCONFIG_HOSTNAME env vars
 
 ${chalk.bold("HTTP/2 + HTTPS:")}
   Use --https for HTTP/2 multiplexing (faster dev server page loads).
